@@ -1,0 +1,12 @@
+
+dism /online /cleanup-image /spsuperseded
+%SystemRoot%\System32\Cmd.exe /c Cleanmgr /sageset:65535 & Cleanmgr /sagerun:65535
+if exist %SYSTEMROOT%\Installer\$PatchCache$ rmdir /S /Q %SYSTEMROOT%\Installer\$PatchCache$
+
+  if exist %ALLUSERSPROFILE%\Microsoft\Windows\WER rmdir /S /Q %ALLUSERSPROFILE%\Microsoft\Windows\WER"
+
+  net stop wuauserv
+
+  if exist %SYSTEMROOT%\SoftwareDistribution rmdir /S /Q %SYSTEMROOT%\SoftwareDistribution
+
+  net start wuauserv
